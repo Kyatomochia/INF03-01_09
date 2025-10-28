@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgba(186, 216, 125, 0.719);
+    margin: 0;
+    padding: 0;
+}
+
+.naglowek {
+    background-color: rgb(58, 88, 255);
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
+}
+.kwerenda {
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+
+}
+
+.tekst1 {
+    color: white;
+}
+.Wykonal {
+    color: white;
+    margin-top: 20px;
+    background-color: rgba(105, 105, 105, 0.712);
+    padding: 10px;
+}
+.zdjecie {
+    background-color: rgba(233, 169, 126, 0.808);
+    width: 200px;
+    height: 150px;
+    background-size: cover;
+    background-position: left;
+    margin: 10px;
+}

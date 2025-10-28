@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <title>Egzamin inf03 2025_01_09_SG</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="naglowek"><br>
+        <h1 class="tekst1">Klub zdobywców gór polskich</h1><br>
+        </div>
+        <div style="display: flex;" class="kwerenda">
+        <p style="padding: 10px; margin: auto;" style="text-align: center;" >kwerenda1</p>
+        <p style="padding: 10px; margin: auto;" style="text-align: center;">kwerenda2</p>
+        <p style="padding: 10px; margin: auto;" style="text-align: center;">kwerenda3</p>
+        <p style="padding: 10px; margin: auto;" style="text-align: center;">kwerenda4</p>
+        </div>
+        <div style="float: left;" class="zdjecie">
+            <img src="logo.png" alt="Logo Klubu Zdobywców Gór Polskich" width="200" height="200">
+            <h3><strong>razem z nami:</strong></h3>
+            <p>wyjazdy</p>
+            <p>szkolenia</p>
+            <p>rekreacja</p>
+            <p>wypoczynek</p>
+            <p>wyzwania</p>
+        </div>
+     
+
+        <h3 style="text-align: center;"><strong>Dołącz do naszego zespołu!</strong></h3>
+        <p style="text-align: center;">Wpisz swoje dane do formularza:</p>
+
+        <form id="joinForm" style="text-align: center;">
+            <label for="imie">Imie:</label>
+            <input type="text" id="imie" name="imie" required>
+            <label for="nazwisko">Nazwisko:</label>
+            <input type="text" id="nazwisko" name="nazwisko" required>
+            <label for="funkcja">Funkcja:</label>
+            <select id="funkcja" name="funkcja" required>
+                <option>uczestnik</option>
+                <option>organizator</option>
+                <option>przewodnik</option>
+                <option>zaopatrzeniowiec</option>
+                <option>ratownik</option>
+            </select>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <input type="submit" value="Dodaj do tabeli">
+
+        </form>
+        <h3 style="text-align: center;">Lista zgłoszeń</h3>
+        <table align="center"  id="entriesTable" border="1" cellpadding="6" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Lp.</th>
+                    <th>Imie</th>
+                    <th>Nazwisko</th>
+                    <th>Funkcja</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- DANE Z FORMULARZA BEDA TUTAJ -->
+            </tbody>
+        </table>
+        <script>
+            (function() {
+                const form = document.getElementById('joinForm');
+                const tableBody = document.querySelector('#entriesTable tbody');
+
+                function addRow(data) {
+                    const tr = document.createElement('tr');
+
+                    const indexCell = document.createElement('td');
+                    indexCell.textContent = tableBody.children.length + 1;
+                    tr.appendChild(indexCell);
+
+                    const imieCell = document.createElement('td');
+                    imieCell.textContent = data.imie;
+                    tr.appendChild(imieCell);
+
+                    const nazwiskoCell = document.createElement('td');
+                    nazwiskoCell.textContent = data.nazwisko;
+                    tr.appendChild(nazwiskoCell);
+
+                    const funkcjaCell = document.createElement('td');
+                    funkcjaCell.textContent = data.funkcja;
+                    tr.appendChild(funkcjaCell);
+                    
+                    const emailCell = document.createElement('td');
+                    emailCell.textContent = data.email;
+                    tr.appendChild(emailCell);
+
+                    tableBody.appendChild(tr);
+                }
+
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const formData = new FormData(form);
+                    const entry = {
+                        imie: formData.get('imie').trim(),
+                        nazwisko: formData.get('nazwisko').trim(),
+                        funkcja: formData.get('funkcja').trim(),
+                        email: formData.get('email').trim()
+                    };
+
+                    if (!entry.imie || !entry.nazwisko || !entry.email || !entry.funkcja) {
+                        alert('Proszę wypełnić wszystkie pola formularza.');
+                        return;
+                    }
+
+                    addRow(entry);
+
+                    form.reset();
+                    const firstText = form.querySelector('input[type="text"]');
+                    if (firstText) firstText.focus();
+                });
+            })();
+        </script>
+        <div class="Wykonal">
+        <h5 style="text-align: center;">Stronę wykonał: Maksym Zinenko TP1</h5>
+        </div>
+    </body>
+</html>
